@@ -1,0 +1,61 @@
+CREATE DATABASE shopper;
+
+CREATE TABLE users (
+id INT PRIMARY KEY AUTO_INCREMENT,
+username VARCHAR(30),
+password VARCHAR(30)
+);
+
+CREATE TABLE user_info (
+first_name VARCHAR(255),
+last_name VARCHAR(255),
+email VARCHAR(255), 
+optional_phone VARCHAR(20),
+sec_ques_one VARCHAR(1024),
+sec_answ_one VARCHAR(64),
+sec_ques_two VARCHAR(1024),
+sec_answ_two VARCHAR(64),
+creation_date DATETIME,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE items (
+id INT PRIMARY KEY AUTO_INCREMENT,
+sites_to_search VARCHAR(255), 
+item_descr VARCHAR(256), 
+item_target_price DECIMAL(10,2),
+start_track_date DATETIME,
+last_search_date DATETIME,
+search_count INT,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE item_search_info (
+search_date_time DATETIME, 
+search_listing_url VARCHAR(512), 
+search_item_price DECIMAL(10,2),
+search_item_title VARCHAR(255),
+search_item_descr VARCHAR(1024),
+search_site_name VARCHAR(255),
+item_id INT,
+user_id INT;
+FOREIGN KEY (item_id) REFERENCES items(id),
+FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE urls (
+id INT PRIMARY KEY AUTO_INCREMENT,
+site_name VARCHAR(255),
+site_url VARCHAR(1024),
+site_descr VARCHAR(1024),
+last_search_date DATETIME,
+first_search_date DATETIME,
+user_id, INT,
+FOREIGN KEY (user_id) REFERENCES users(id)this
+);
+
+CREATE USER 'shopper_backend'@'localhost' IDENTIFIED BY 'password';
+GRANT SELECT, INSERT, DELETE, UPDATE ON shopper.* TO 'shopper_backend'@'localhost';
+
