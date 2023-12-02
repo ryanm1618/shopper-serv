@@ -41,7 +41,7 @@ search_item_title VARCHAR(255),
 search_item_descr VARCHAR(1024),
 search_site_name VARCHAR(255),
 item_id INT,
-user_id INT;
+user_id INT,
 FOREIGN KEY (item_id) REFERENCES items(id),
 FOREIGN KEY (user_id) REFERENCES users(id)
 );
