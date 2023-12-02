@@ -54,7 +54,7 @@ site_descr VARCHAR(1024),
 last_search_date DATETIME,
 first_search_date DATETIME,
 user_id INT,
-FOREIGN KEY (user_id) REFERENCES users(id)this
+FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE USER 'shopper_backend'@'localhost' IDENTIFIED BY 'password';
