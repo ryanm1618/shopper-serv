@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ryan.shopper.shopperserv.dto.UserDTO;
+import com.ryan.shopper.shopperserv.dto.UserInfoDTO;
+import com.ryan.shopper.shopperserv.exception.UserInfoNotFoundException;
 import com.ryan.shopper.shopperserv.exception.UserNotFoundException;
 import com.ryan.shopper.shopperserv.service.UserServiceImpl;
 
@@ -18,11 +20,11 @@ public class UserAPI {
 	
 	@Autowired
 	UserServiceImpl userService;
+
 	
 	@PostMapping("/login")
-	@ResponseBody
-	UserDTO authenticateUser(String username, 
-							  String password) throws UserNotFoundException {
-		return userService.authenticateUser(username, password);
+	UserInfoDTO userLogin(String username,  String password) throws UserNotFoundException, UserInfoNotFoundException{
+		UserInfoDTO potentialUser = userService.authenticateUser(username, password); 
+		return potentialUser;
 	}
 }

@@ -1,35 +1,32 @@
 package com.ryan.shopper.shopperserv.dto;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 public class UserInfoDTO {
 	Integer userId;
-	String username;
-	String password;
 	String firstName;
 	String lastName;
 	String email;
 	String phoneNumber;
-	String securityQuesOne;
-	String securityAnswOne;
-	String securityQuesTwo;
-	String securityAnswTwo;
-	String creationDate;
+	Timestamp lastLogin;
+	Timestamp creationDate;
+	
+	public UserInfoDTO(Integer userId, String firstName, String lastName, String email, String phoneNumber,
+			Timestamp lastLogin, Timestamp creationDate) {
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.lastLogin = lastLogin;
+		this.creationDate = creationDate;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
 	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -55,34 +52,16 @@ public class UserInfoDTO {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getSecurityQuesOne() {
-		return securityQuesOne;
+	public Timestamp getLastLogin() {
+		return this.lastLogin;
 	}
-	public void setSecurityQuesOne(String securityQuesOne) {
-		this.securityQuesOne = securityQuesOne;
+	public void setLastLogin(Timestamp lastLog) {
+		this.lastLogin = lastLog;
 	}
-	public String getSecurityAnswOne() {
-		return securityAnswOne;
-	}
-	public void setSecurityAnswOne(String securityAnswOne) {
-		this.securityAnswOne = securityAnswOne;
-	}
-	public String getSecurityQuesTwo() {
-		return securityQuesTwo;
-	}
-	public void setSecurityQuesTwo(String securityQuesTwo) {
-		this.securityQuesTwo = securityQuesTwo;
-	}
-	public String getSecurityAnswTwo() {
-		return securityAnswTwo;
-	}
-	public void setSecurityAnswTwo(String securityAnswTwo) {
-		this.securityAnswTwo = securityAnswTwo;
-	}
-	public String getCreationDate() {
+	public Timestamp getCreationDate() {
 		return creationDate;
 	}
-	public void setCreationDate(String creationDate) {
+	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
 	}
 	
