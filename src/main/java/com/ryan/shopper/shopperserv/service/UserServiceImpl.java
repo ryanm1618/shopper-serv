@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService{
 		UserEntity fromDBEntity;
 		Optional<UserEntity> fromDBOptional  = this.repo.findByUserNameAndPassword(username, password);
 		if(fromDBOptional.isEmpty()) { 
-			throw new UserNotFoundException("Bad login info. Try again!");
+			throw new UserNotFoundException("Unable to login using username: " + username + " and password: " + password);
 		}
 		fromDBEntity = fromDBOptional.get();
 		UserInfoDTO userInfo; 	
