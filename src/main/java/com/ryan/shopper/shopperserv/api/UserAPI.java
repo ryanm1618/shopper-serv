@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ryan.shopper.shopperserv.dto.AccountCreationDTO;
 import com.ryan.shopper.shopperserv.dto.UserDTO;
 import com.ryan.shopper.shopperserv.dto.UserInfoDTO;
 import com.ryan.shopper.shopperserv.exception.UserInfoNotFoundException;
@@ -30,5 +31,10 @@ public class UserAPI {
 	UserInfoDTO userLogin(@RequestBody UserDTO user) throws UserNotFoundException, UserInfoNotFoundException{
 		UserInfoDTO potentialUser = userService.authenticateUser(user.getUserName(), user.getPassword()); 
 		return potentialUser;
+	}
+	@PostMapping("/create-account")
+	boolean accountCreation(@RequestBody AccountCreationDTO userInfo) {
+		
+		return true;
 	}
 }
