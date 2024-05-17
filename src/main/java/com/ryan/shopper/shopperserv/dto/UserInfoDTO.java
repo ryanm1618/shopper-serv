@@ -3,6 +3,8 @@ package com.ryan.shopper.shopperserv.dto;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import com.ryan.shopper.shopperserv.entity.UserInfoEntity;
+
 public class UserInfoDTO {
 	Integer userId;
 	String firstName;
@@ -11,6 +13,10 @@ public class UserInfoDTO {
 	String phoneNumber;
 	Timestamp lastLogin;
 	Timestamp creationDate;
+	
+	public UserInfoDTO() {
+		
+	}
 	
 	public UserInfoDTO(Integer userId, String firstName, String lastName, String email, String phoneNumber,
 			Timestamp lastLogin, Timestamp creationDate) {
@@ -63,6 +69,17 @@ public class UserInfoDTO {
 	}
 	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
+	}
+	public UserInfoEntity toEntity() {
+		UserInfoEntity returnEntity = new UserInfoEntity();
+		returnEntity.setFirstName(this.getFirstName());
+		returnEntity.setLastName(this.getLastName());
+		returnEntity.setEmail(this.getEmail());
+		returnEntity.setPhone(this.getPhoneNumber());
+		returnEntity.setLastLogin(this.getLastLogin());
+		returnEntity.setCreationDate(this.getCreationDate());
+		
+		return returnEntity;
 	}
 	
 }

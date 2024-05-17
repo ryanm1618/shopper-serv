@@ -1,5 +1,7 @@
 package com.ryan.shopper.shopperserv.dto;
 
+import java.sql.Timestamp;
+
 public class AccountCreationDTO {
 	private String userName; 
 	private String password; 
@@ -60,6 +62,28 @@ public class AccountCreationDTO {
 	}
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+	public UserInfoDTO createUserInfoDTO() {
+		return new UserInfoDTO(null, birthday, birthday, birthday, birthday, null, null);
+	}
+	public UserDTO toUserDTO() {
+		UserDTO returnDTO = new UserDTO();
+		returnDTO.setUserId(0);
+		returnDTO.setUserName(this.getUserName());
+		returnDTO.setPassword(this.getPassword());
+		return returnDTO;
+	}
+	public UserInfoDTO toUserInfoDTO() {
+		UserInfoDTO returnDTO = new UserInfoDTO();
+		returnDTO.setUserId(0);
+		returnDTO.setFirstName(this.getFirstName());
+		returnDTO.setLastName(this.getLastName());
+		returnDTO.setEmail(this.getEmail());
+		returnDTO.setPhoneNumber(this.getOptionalPhone());
+		returnDTO.setLastLogin(null);
+		returnDTO.setCreationDate(new Timestamp(System.currentTimeMillis()));
+		
+		return returnDTO;
 	}
 	
 }

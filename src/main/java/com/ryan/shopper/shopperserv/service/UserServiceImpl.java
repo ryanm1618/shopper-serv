@@ -48,7 +48,28 @@ public class UserServiceImpl implements UserService{
 		return fromDBEntity.toDTO();
 		
 	}
+	public boolean checkIfUserExists(UserDTO user) throws UserAlreadyExistsException {
+		Optional<UserEntity> fromDBOptional = this.repo.findByUserName(user.getUserName()); 
+		System.out.println("USERNAME BEING VALIDATED:"+user.getUserName()+"</END>");
+		if(fromDBOptional.isEmpty()) {
+			return false;
+		}
+		throw new UserAlreadyExistsException("The username is already taken.");
+	}
 	public void createNewUser(AccountCreationDTO userInfo) throws UserAlreadyExistsException, UserInfoValidationException{
-		
+		Optional<UserEntity> fromDBOptional = this.repo.findByUserName(userInfo.getUserName()); 
+		if(fromDBOptional.isEmpty()) {
+			UserDTO newUser = userInfo.toUserDTO();
+			UserInfoDTO newUserInfo = userInfo.toUserInfoDTO();
+			
+			UserEntity newUserEntity = newUser.toEntity();
+			UserInfoEntity newUserInfoEntity = newUserInfo.toEntity();
+			
+			UserEntity updatedUserEntity = this.repo.save(newUserEntity);
+			newUserInfoEntity.setUserId(updatedUserEntity.getId());
+			this.infoRepo.save(newUserInfoEntity);
+		}else {
+			throw new UserAlreadyExistsException("That username is already taken. Please choose another.");
+		}
 	}
 }
