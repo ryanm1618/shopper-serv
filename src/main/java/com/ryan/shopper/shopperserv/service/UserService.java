@@ -12,5 +12,4 @@ public interface UserService {
 	public UserInfoDTO authenticateUser(String username, String password) throws UserNotFoundException, UserInfoNotFoundException;
 	public void createNewUser(AccountCreationDTO userInfo) throws UserAlreadyExistsException, UserInfoValidationException;
 	public boolean checkIfUserExists(UserDTO user) throws UserAlreadyExistsException; 
-	public void validateAccountCreationDTO(AccountCreationDTO userinf0)throws UserInfoValidationException;
 }

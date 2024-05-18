@@ -33,7 +33,7 @@ public class UserAPI {
 	
 
 	@PostMapping("/login")
-	UserInfoDTO userLogin(@Valid @RequestBody UserDTO user) throws UserNotFoundException, UserInfoNotFoundException{
+	UserInfoDTO userLogin(@Valid @RequestBody UserDTO user) throws UserNotFoundException, UserInfoNotFoundException, UserInfoValidationException{
 		UserInfoDTO potentialUser = userService.authenticateUser(user.getUserName(), user.getPassword()); 
 		return potentialUser;
 	}
@@ -44,7 +44,7 @@ public class UserAPI {
 	}
 	@PostMapping("/check-username")
 	@CrossOrigin(origins = "http://localhost:5500/")
-	boolean validateUsernameUnique(@RequestBody UserDTO username) throws UserAlreadyExistsException{
+	boolean validateUsernameUnique(@Valid @RequestBody UserDTO username) throws UserAlreadyExistsException{
 		return userService.checkIfUserExists(username);
 	}
 }

@@ -1,5 +1,6 @@
 package com.ryan.shopper.shopperserv.entity;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import com.ryan.shopper.shopperserv.dto.UserInfoDTO;
@@ -23,6 +24,8 @@ public class UserInfoEntity {
 	String email;
 	@Column(name = "optional_phone")
 	String phone;
+	@Column(name = "birthday")
+	Date birthday; 
 	@Column(name = "last_login_date")
 	Timestamp lastLogin;
 	@Column(name = "creation_date")
@@ -35,7 +38,17 @@ public class UserInfoEntity {
 	private UserEntity userLogin; 
 	
 	public UserInfoDTO toDTO() {
-		return new UserInfoDTO(this.userId, this.firstName, this.lastName, this.email, this.phone, this.lastLogin, this.creationDate);
+		UserInfoDTO newDTO = new UserInfoDTO();
+		newDTO.setFirstName(firstName);
+		newDTO.setLastName(lastName);
+		newDTO.setEmail(email);
+		newDTO.setPhoneNumber(phone);
+		
+		newDTO.setLastLogin(lastLogin);
+		newDTO.setCreationDate(creationDate);
+		newDTO.setUserId(userId);
+		
+		return newDTO;
 	}
 
 	public String getFirstName() {
@@ -69,7 +82,12 @@ public class UserInfoEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
+	public Date getBirthday() {
+		return this.birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 	public Timestamp getLastLogin() {
 		return lastLogin;
 	}
