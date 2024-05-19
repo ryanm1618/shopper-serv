@@ -8,24 +8,24 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class AccountCreationDTO {
-	@NotNull
-	@Size(min = 8, max = 30)
+	@NotNull(message="API_DTO - userName can't be null")
+	@Size(min = 8, max = 30, message="API_DTO - Invalid userName size")
 	private String userName; 
-	@NotNull
-	@Size(min = 8, max = 30)
+	@NotNull(message="API_DTO - password can't be null")
+	@Size(min = 8, max = 30, message="API_DTO - Invalid password length")
 	private String password; 
-	@NotNull
-	@Size(min = 1, max = 30)
+	@NotNull(message="API_DTO - first name can't be null")
+	@Size(min = 1, max = 30, message="API_DTO - Invalid firstName")
 	private String firstName;
-	@NotNull
-	@Size(min = 1, max = 30)
+	@NotNull(message="API_DTO - lastName can't be null")
+	@Size(min = 1, max = 30, message="API_DTO - Invalid lastName")
 	private String lastName;
-	@NotNull
-	@Email
+	@NotNull(message="API_DTO - email can't be null")
+	@Email(message="API_DTO - Invalid email")
 	private String email;
-	@Size(max = 14)
+	@Size(max = 14, message="API_DTO - Phone number too large")
 	private String optionalPhone;
-	@NotNull
+	@NotNull(message="API_DTO - Birthday can't be null")
 	private Date birthday;
 	public AccountCreationDTO() {
 		

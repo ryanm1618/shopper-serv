@@ -12,24 +12,24 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class UserInfoDTO {
-	@NotNull
-	@Min(value = 0)
+	@NotNull(message="userId can't be null")
+	@Min(value = 0, message="userId must be present, minimum of 0")
 	Integer userId;
-	@NotNull
-	@Size(min = 8, max = 30)
+	@NotNull(message="fistName can't be null")
+	@Size(min = 1, max = 30, message="Invalid first name size")
 	String firstName;
-	@NotNull
-	@Size(min = 8, max = 30)
+	@NotNull(message="lastname can't be null")
+	@Size(min = 1, max = 30, message="Invalid last name size")
 	String lastName;
-	@NotNull
-	@Size(min = 5, max = 100)
-	@Email
+	@NotNull(message="email can't be null")
+	@Size(min = 5, max = 100, message="Invalid email")
+	@Email(message="Invalid email")
 	String email;
-	@Size(max = 14)
+	@Size(max = 14, message="Invalid phone number")
 	String phoneNumber;
 	
-	@NotNull
-	@Size(min = 10, max = 10)
+	@NotNull(message="birthday can't be null")
+	@Size(min = 10, max = 10, message="Invalid birthday")
 	Date birthday;
 	
 	Timestamp lastLogin;
