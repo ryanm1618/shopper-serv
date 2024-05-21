@@ -1,4 +1,4 @@
-package com.ryan.shopper.shopperserv.api;
+package com.ryan.shopper.shopperserv.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ryan.shopper.shopperserv.exception.ErrorResponse;
 import com.ryan.shopper.shopperserv.exception.UserAlreadyExistsException;
 import com.ryan.shopper.shopperserv.exception.UserInfoNotFoundException;
 import com.ryan.shopper.shopperserv.exception.UserInfoValidationException;

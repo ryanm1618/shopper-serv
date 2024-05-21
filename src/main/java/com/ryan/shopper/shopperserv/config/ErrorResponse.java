@@ -1,4 +1,4 @@
-package com.ryan.shopper.shopperserv.exception;
+package com.ryan.shopper.shopperserv.config;
 
 public class ErrorResponse {
 	private int statusCode;
