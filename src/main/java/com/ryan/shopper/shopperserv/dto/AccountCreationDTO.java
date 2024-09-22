@@ -8,33 +8,34 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class AccountCreationDTO {
-	@NotNull(message="API_DTO - userName can't be null")
-	@Size(min = 8, max = 30, message="API_DTO - Invalid userName size")
-	private String userName; 
-	@NotNull(message="API_DTO - password can't be null")
-	@Size(min = 8, max = 30, message="API_DTO - Invalid password length")
+	@NotNull(message="USERNAME_NULL")
+	@Size(min = 8, max = 30, message="USERNAME_SIZE_VIOLATION")
+	private String username; 
+	@NotNull(message="PASSWORD_NULL")
+	@Size(min = 8, max = 30, message="PASSWORD_SIZE_VIOLATION")
 	private String password; 
-	@NotNull(message="API_DTO - first name can't be null")
-	@Size(min = 1, max = 30, message="API_DTO - Invalid firstName")
-	private String firstName;
-	@NotNull(message="API_DTO - lastName can't be null")
-	@Size(min = 1, max = 30, message="API_DTO - Invalid lastName")
+	@NotNull(message="FIRSTNAME_NULL")
+	@Size(min = 1, max = 30, message="FIRSTNAME_SIZE_VIOLATION")
+	private String firstname;
+	@NotNull(message="LASTNAME_NULL")
+	@Size(min = 1, max = 30, message="LASTNAME_SIZE_VIOLATION")
 	private String lastName;
-	@NotNull(message="API_DTO - email can't be null")
-	@Email(message="API_DTO - Invalid email")
+	@NotNull(message="EMAIL_NULL")
+	@Email(message="EMAIL_INVALID")
 	private String email;
-	@Size(max = 14, message="API_DTO - Phone number too large")
-	private String optionalPhone;
-	@NotNull(message="API_DTO - Birthday can't be null")
+	@Size(max = 14, message="PHONENUMBER_SIZE_VIOLATION")
+	private String phonenumber;
+	@NotNull(message="BIRTHDAY_NULL")
+	@Size(min = 10, max = 10, message="BIRTHDAY_SIZE_VIOLATION")
 	private Date birthday;
 	public AccountCreationDTO() {
 		
 	}
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.username = userName;
 	}
 	public String getPassword() {
 		return password;
@@ -43,10 +44,10 @@ public class AccountCreationDTO {
 		this.password = password;
 	}
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 	public String getLastName() {
 		return lastName;
@@ -61,10 +62,10 @@ public class AccountCreationDTO {
 		this.email = email;
 	}
 	public String getOptionalPhone() {
-		return optionalPhone;
+		return phonenumber;
 	}
 	public void setOptionalPhone(String optionalPhone) {
-		this.optionalPhone = optionalPhone;
+		this.phonenumber = optionalPhone;
 	}
 	public Date getBirthday() {
 		return birthday;

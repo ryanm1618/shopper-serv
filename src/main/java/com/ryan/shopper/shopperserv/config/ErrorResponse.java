@@ -1,17 +1,18 @@
 package com.ryan.shopper.shopperserv.config;
 
+
 public class ErrorResponse {
 	private int statusCode;
-	private String message;
+	private String errorMessage;
 	
-	public ErrorResponse(int statusCode, String message) {
+	public ErrorResponse(int statusCode, String errorMessage) {
 		this.statusCode = statusCode;
-		this.message = message;
+		this.errorMessage = errorMessage;
 	}
 	public int getStatusCode() {
 		return this.statusCode;
 	}
-	public String getMessage() {
-		return this.message;
+	public String getErrorMessages(){
+		return this.errorMessage;
 	}
 }

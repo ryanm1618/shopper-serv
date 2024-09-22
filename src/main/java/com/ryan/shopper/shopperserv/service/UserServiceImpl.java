@@ -3,8 +3,6 @@ package com.ryan.shopper.shopperserv.service;
 
 import java.util.Optional;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +14,6 @@ import com.ryan.shopper.shopperserv.entity.UserEntity;
 import com.ryan.shopper.shopperserv.entity.UserInfoEntity;
 import com.ryan.shopper.shopperserv.exception.UserAlreadyExistsException;
 import com.ryan.shopper.shopperserv.exception.UserInfoNotFoundException;
-import com.ryan.shopper.shopperserv.exception.UserInfoValidationException;
 import com.ryan.shopper.shopperserv.exception.UserNotFoundException;
 import com.ryan.shopper.shopperserv.repository.UserInfoRepository;
 import com.ryan.shopper.shopperserv.repository.UserRepository;
@@ -65,7 +62,7 @@ public class UserServiceImpl implements UserService{
 		}
 		throw new UserAlreadyExistsException("The username is already taken.");
 	}
-	public void createNewUser(AccountCreationDTO userInfo) throws UserAlreadyExistsException, UserInfoValidationException{
+	public void createNewUser(AccountCreationDTO userInfo) throws UserAlreadyExistsException{
 		Optional<UserEntity> fromDBOptional = this.repo.findByUserName(userInfo.getUserName()); 
 		if(fromDBOptional.isEmpty()) {
 			UserDTO newUser = userInfo.toUserDTO();

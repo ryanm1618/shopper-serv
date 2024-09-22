@@ -8,16 +8,16 @@ import jakarta.validation.constraints.Size;
 
 public class UserDTO {
 	
-	@NotNull(message="UserDTO - userId can't be null")
-	@Min(value=0, message="User ID must be greater than or equal to 0")
+	@NotNull(message="USERNAME_NULL")
+	@Min(value=0, message="USERID_LESS_THAN_0")
 	private Integer userId;
 	
-	@NotNull(message="UserDTO - userName can't be null")
-	@Size(min=8, max=30, message="Username should be between 8 and 30 characters")
+	@NotNull(message="USERNAME_NULL")
+	@Size(min=8, max=30, message="USERNAME_SIZE_VIOLATION")
 	private String userName;
 	
-	@NotNull(message="UserDTO - password can't be null")
-	@Size(min=8, max=30, message="Password should be between 8 and 30 characters")
+	@NotNull(message="PASSWORD_NULL")
+	@Size(min=8, max=30, message="PASSWORD_SIZE_VALIDATION")
 	private String password;
 	
 	public UserDTO() {
