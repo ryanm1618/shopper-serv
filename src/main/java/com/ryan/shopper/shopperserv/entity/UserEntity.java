@@ -28,6 +28,14 @@ public class UserEntity {
 	@JoinColumn(name = "id", referencedColumnName = "userId")
 	UserInfoEntity userInfo; 
 	
+	public UserEntity() {
+		
+	}
+	public UserEntity(Integer id, String username, String password) {
+		this.id = id;
+		this.userName = username;
+		this.password = password;
+	}
 	public Integer getId() {return this.id;}
 	public String getUserName() {return this.userName;}
 	public String getPassword() {return this.password;}
@@ -35,6 +43,7 @@ public class UserEntity {
 	public void setId(Integer newId) { this.id = newId;}
 	public void setUserName(String uname) { this.userName = uname;}
 	public void setPassword(String password) { this.password = password;}
+	public UserInfoEntity getUserInfoEntity() { return this.userInfo;} 
 	
 	public UserDTO toDTO() {
 		return new UserDTO(this.getId(),

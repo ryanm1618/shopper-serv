@@ -2,6 +2,7 @@ package com.ryan.shopper.shopperserv.dto;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -26,8 +27,7 @@ public class AccountCreationDTO {
 	@Size(max = 14, message="PHONENUMBER_SIZE_VIOLATION")
 	private String phonenumber;
 	@NotNull(message="BIRTHDAY_NULL")
-	@Size(min = 10, max = 10, message="BIRTHDAY_SIZE_VIOLATION")
-	private Date birthday;
+	private LocalDate birthday;
 	public AccountCreationDTO() {
 		
 	}
@@ -67,10 +67,10 @@ public class AccountCreationDTO {
 	public void setOptionalPhone(String optionalPhone) {
 		this.phonenumber = optionalPhone;
 	}
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 	public UserDTO toUserDTO() {

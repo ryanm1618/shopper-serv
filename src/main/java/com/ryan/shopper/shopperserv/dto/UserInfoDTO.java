@@ -2,6 +2,7 @@ package com.ryan.shopper.shopperserv.dto;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.ryan.shopper.shopperserv.entity.UserInfoEntity;
@@ -29,14 +30,24 @@ public class UserInfoDTO {
 	String phoneNumber;
 	
 	@NotNull(message="BIRTHDAY_NULL")
-	@Size(min = 10, max = 10, message="BIRTHDAY_SIZE_VOILATION")
-	Date birthday;
+	LocalDate birthday;
 	
 	Timestamp lastLogin;
 	Timestamp creationDate;
 	
 	public UserInfoDTO() {
 		
+	}
+	public UserInfoDTO(Integer id, String firstName, String lastName, String email, 
+			String phoneNumber, LocalDate bday, Timestamp lastLogin, Timestamp creationDate) {
+		this.userId = id; 
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.birthday = bday; 
+		this.lastLogin = lastLogin;
+		this.creationDate = creationDate;
 	}
 	public Integer getUserId() {
 		return userId;
@@ -68,10 +79,10 @@ public class UserInfoDTO {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return this.birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 	public Timestamp getLastLogin() {

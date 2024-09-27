@@ -2,6 +2,7 @@ package com.ryan.shopper.shopperserv.entity;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import com.ryan.shopper.shopperserv.dto.UserInfoDTO;
 
@@ -25,7 +26,7 @@ public class UserInfoEntity {
 	@Column(name = "optional_phone")
 	String phone;
 	@Column(name = "birthday")
-	Date birthday; 
+	LocalDate birthday; 
 	@Column(name = "last_login_date")
 	Timestamp lastLogin;
 	@Column(name = "creation_date")
@@ -82,10 +83,10 @@ public class UserInfoEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return this.birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 	public Timestamp getLastLogin() {

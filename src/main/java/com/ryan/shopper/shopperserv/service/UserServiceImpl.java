@@ -39,19 +39,7 @@ public class UserServiceImpl implements UserService{
 			throw new UserNotFoundException("Unable to login using username: " + username + " and password: " + password);
 		}
 		fromDBEntity = fromDBOptional.get();
-		UserInfoDTO userInfo; 	
-		userInfo = this.getAccountDetails(fromDBEntity.toDTO());
-		return userInfo;
-		
-	}
-	private UserInfoDTO getAccountDetails(UserDTO user) throws UserInfoNotFoundException{
-		UserInfoEntity fromDBEntity; 
-		Optional<UserInfoEntity> fromDBOptional = this.infoRepo.findByUserId(user.getUserId());
-		if(fromDBOptional.isEmpty()) {
-			throw new UserInfoNotFoundException("Unable to retrieve user info. Please try again later."); 
-		}
-		fromDBEntity = fromDBOptional.get();
-		return fromDBEntity.toDTO();
+		return fromDBEntity.getUserInfoEntity().toDTO();
 		
 	}
 	public boolean checkIfUserExists(UserDTO user) throws UserAlreadyExistsException {

@@ -47,10 +47,6 @@ public class UserDTO {
 		return this.password;
 	}
 	public UserEntity toEntity() {
-		UserEntity returnEntity = new UserEntity();
-		returnEntity.setId(this.getUserId());
-		returnEntity.setUserName(this.getUserName());
-		returnEntity.setPassword(this.getPassword());
-		return returnEntity;
+		return new UserEntity(this.getUserId(), this.getUserName(), this.getPassword());
 	}
 }
